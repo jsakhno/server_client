@@ -6,7 +6,12 @@ from random import choice
 
 s = socket.socket()         
 host = socket.gethostname() 
-port = 12345                
+port = 12345   
+
+class Client():
+   def sndjson(z):
+         z = z.encode()
+         s.send(z)
 
 print('Connecting to ', host, port)
 s.connect((host, port))
@@ -48,15 +53,13 @@ while True:
          i=i+1
          time.sleep(1)
          with open('CL.json', 'r') as file:
-             confjson = json.load(file)
-         z=str(confjson)
-         z = z.encode()
-         s.send(z)
+             z = json.load(file)
+         z=str(z)
+         Client.sndjson(z)
          msg = s.recv(1024)
          print('SERVER >> ', msg)
    else:
-    msg = msg.encode()
-    s.send(msg)
+    Client.sndjson(msg)
     msg = s.recv(1024)
     print('SERVER >> ', msg)
 s.close
