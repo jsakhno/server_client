@@ -37,7 +37,7 @@ def main():
     
     client=gen_client()
     
-    with open('CL1.json','w') as file:
+    with open('CL3.json','w') as file:
         json.dump(client, file)
 
 if __name__=='__main__':
@@ -52,7 +52,7 @@ while True:
       while i<10:
          i=i+1
          time.sleep(1)
-         with open('CL1.json', 'r') as file:
+         with open('CL3.json', 'r') as file:
              z = json.load(file)
          z=str(z)
          Client.sndjson(z)
